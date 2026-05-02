@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Riverbed - Interactive Countdown</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
     <style>
         :root {
             --bg: #0a0e14;
@@ -219,7 +218,7 @@
 
         @media (max-width: 768px) {
             #big-number { top: 35%; }
-            #custom-panel { bottom: auto; top: 60px; right: 10px; transform: scale(0.8); transform-origin: top right; }
+            #custom-panel { bottom: auto; top: 20px; right: 10px; transform: scale(0.8); transform-origin: top right; }
             .seq-slot { width: 30px; height: 30px; }
         }
     </style>
@@ -336,7 +335,7 @@ async function initAudio() {
     masterFilter = new Tone.Filter(MATERIALS[activeMaterial].filter, "lowpass");
     masterReverb = new Tone.Reverb({ decay: 2.5, wet: 0.3 });
     limiter = new Tone.Limiter(-3);
-    analyser = new Tone.Analyser('waveform', 2048); // Increased resolution for denser lines
+    analyser = new Tone.Analyser('waveform', 2048); 
 
     masterFilter.chain(masterReverb, limiter, analyser, Tone.Destination);
     await masterReverb.ready;
